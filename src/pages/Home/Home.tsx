@@ -14,6 +14,7 @@ function Home() {
   )
   const dispatch = useAppDispatch()
   const [city, setCity] = useState<string>("")
+  
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCity(event.target.value)
   }

@@ -13,6 +13,8 @@ const searchInitialState: SearchSliceState = {
   status: "default",
 }
 
+const API_KEY = '0b22782f0d16c66b86362fb7f541c1e9'
+
 export const searchSlice = createAppSlice({
   name: "Search",
   initialState: searchInitialState,
@@ -20,7 +22,7 @@ export const searchSlice = createAppSlice({
     getWeather: create.asyncThunk(
       async (city: string, thunkApi) => {
         try {
-          const API_KEY = '0b22782f0d16c66b86362fb7f541c1e9'
+          
           const result = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`,
           )
@@ -31,12 +33,15 @@ export const searchSlice = createAppSlice({
             icon: weather[0].icon,
             temperature: main.temp,
           }
-        } catch (error) {
+
+          // return result.data
+            } catch (error) {
           return thunkApi.rejectWithValue(error)
         }
       },
       {
         pending: (state: SearchSliceState) => {
+          state.currentWeatherData = { city: "", temp: 0, icon: "" }
           state.status = "loading"
           state.error = undefined
         },
@@ -47,6 +52,7 @@ export const searchSlice = createAppSlice({
             ...state.data,
             { city: cityName, temp: temperature, icon },
           ]
+          state.status ='success'
         },
         rejected: (state: SearchSliceState, action: any) => {
           state.error = action.payload
