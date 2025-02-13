@@ -45,7 +45,7 @@ function Home() {
         <WeatherBlock
           city={currentWeatherData.city}
           temp={currentWeatherData.temp}
-          icon={currentWeatherData.icon}
+          icon={currentWeatherData.iconURL}
         />
       )}
       {isLoading && <Spinner />}

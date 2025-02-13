@@ -7,6 +7,7 @@ import {
   NavContainer,
   Main,
   StyledNavLink,
+  Title
   } from "./styles"
 
 function Layout({ children }: LayoutProps) {
@@ -17,6 +18,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <LayoutWrapper>
       <Header>
+        <Title>Weather App</Title>
         <NavContainer>
           <StyledNavLink
             style={({ isActive }) => ({

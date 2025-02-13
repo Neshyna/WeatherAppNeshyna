@@ -16,7 +16,13 @@ const WeatherBlock: React.FC<WeatherBlockProps> = ({ city, temp, icon }) => {
       </TempNameContainer>
       <IconContainer>
         <img
-          src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+          src={icon}
+        />
+         <img
+          src={icon}
+        />
+         <img
+          src={icon}
         />
       </IconContainer>
     </WeatherBlockContainer>

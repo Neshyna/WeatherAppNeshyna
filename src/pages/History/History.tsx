@@ -1,36 +1,43 @@
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import WeatherBlock from "../../components/WeatherBlock/WeatherBlock"
-import { HistoryPageWrapper } from "./styles"
+import { HistoryPageWrapper, ButtonContainer } from "./styles"
 import {
-  historyActions,
-  historySelectors,
-} from "store/redux/history/historySlice"
+  searchActions,
+  searchSelectors,
+} from "store/redux/search/searchSlice"
 import Button from "components/Button/Button"
 import { v4 } from "uuid"
 
 function History() {
-  const historyData = useAppSelector(historySelectors.history)
+  const { history, error, status } = useAppSelector(
+    searchSelectors.weatherData,
+  )
   const dispatch = useAppDispatch()
 
-  const history = historyData.map(block => {
+  const weatherCardBlocks = history.map((weatherCard: any) => {
     return (
+      
       <WeatherBlock
         key={v4()}
-        city={block.city}
-        temp={block.temp}
-        icon={block.icon}
-      ></WeatherBlock>
+       city={weatherCard.city}
+        temp={weatherCard.temp}
+        icon={weatherCard.iconURL}
+      > 
+      </WeatherBlock>
     )
   })
 
   const deleteCards = () => {
-    dispatch(historyActions.deleteCards())
+    dispatch(searchActions.deleteCards())
   }
 
   return (
     <HistoryPageWrapper>
-      {history}
-      <Button name="Delete all cards" onClick={deleteCards} />
+      {weatherCardBlocks}
+      <ButtonContainer>
+        <Button name="Delete all cards" onClick={deleteCards} />
+      </ButtonContainer>
+      
     </HistoryPageWrapper>
   )
 }

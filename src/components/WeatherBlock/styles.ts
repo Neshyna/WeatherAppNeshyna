@@ -10,17 +10,25 @@ height: 180px;
 color: white;
 padding: 25px;
 border-radius: 40px;
+width: 710px;
 `
 
 export const TempNameContainer = styled.div`
 display: flex;
-direction: column;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 10px;
 `
 
 export const IconContainer = styled.div`
 width: 290px;
 height: 74px;
 padding: 50px;
+display: flex;
+direction: row;
+align-items: center;
+justify-content: center;
 `
 
 export const City = styled.div`

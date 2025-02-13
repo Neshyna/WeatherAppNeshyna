@@ -13,7 +13,7 @@ export const LayoutWrapper = styled.div`
 
 export const Header = styled.header`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   width: 100%;
@@ -46,3 +46,9 @@ export const StyledLink = styled(Link)`
   font-size: 16px;
   color: white;
 `;
+
+export const Title = styled.div`
+ text-decoration: none;
+  font-size: 20px;
+  color: white;
+`
