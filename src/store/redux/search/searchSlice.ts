@@ -1,10 +1,14 @@
 import axios from "axios"
-
-import { createAppSlice} from "store/createAppSlice"
-import { SearchSliceState } from "./types"
+import { createAppSlice } from "store/createAppSlice"
+import { SearchSliceState, WeatherData } from "./types"
 
 const searchInitialState: SearchSliceState = {
   data: [],
+  currentWeatherData: {
+    city: "",
+    temp: 0,
+    icon: "",
+  },
   error: undefined,
   status: "default",
 }
@@ -12,17 +16,16 @@ const searchInitialState: SearchSliceState = {
 export const searchSlice = createAppSlice({
   name: "Search",
   initialState: searchInitialState,
-  reducers: (create) => ({
+  reducers: create => ({
     getWeather: create.asyncThunk(
       async (city: string, thunkApi) => {
         try {
-          const API_KEY = "129e1bc50f66276d33b636e9a74bc222"
-
+          const API_KEY = '0b22782f0d16c66b86362fb7f541c1e9'
           const result = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`,
           )
-          
-          const {name,weather,main} = result.data;
+
+          const { name, weather, main } = result.data
           return {
             cityName: name,
             icon: weather[0].icon,
@@ -38,8 +41,12 @@ export const searchSlice = createAppSlice({
           state.error = undefined
         },
         fulfilled: (state: SearchSliceState, action: any) => {
-          state.data = [...state.data, `${action.payload}`]
-          state.status = "success"
+          const { cityName, icon, temperature } = action.payload
+          state.currentWeatherData = { city: cityName, temp: temperature, icon }
+          state.data = [
+            ...state.data,
+            { city: cityName, temp: temperature, icon },
+          ]
         },
         rejected: (state: SearchSliceState, action: any) => {
           state.error = action.payload
@@ -49,7 +56,7 @@ export const searchSlice = createAppSlice({
     ),
   }),
   selectors: {
-    weatherData: (state: SearchSliceState) => state.data,
+    weatherData: (state: SearchSliceState) => state,
   },
 })
 export const searchActions = searchSlice.actions

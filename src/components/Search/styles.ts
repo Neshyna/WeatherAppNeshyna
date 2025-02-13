@@ -10,9 +10,8 @@ export const SearchContainer = styled.input`
   border-radius: 40px;
   font-size: 20px;
   color: white;
-  gap: 10px;
-  filter: blur(16);
-
+  background-color:rgba(255, 255, 255, 0.22); 
+ 
   &::placeholder {
   color: white;
 }

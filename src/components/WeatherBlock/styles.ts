@@ -22,3 +22,11 @@ width: 290px;
 height: 74px;
 padding: 50px;
 `
+
+export const City = styled.div`
+font-size: 20px;
+`
+
+export const Temp = styled.div`
+font-size: 57px;
+`

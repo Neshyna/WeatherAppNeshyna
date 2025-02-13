@@ -1,9 +1,9 @@
 export interface WeatherBlockData {
-  cityName: string;       
-  temperature: number; 
+  temp: number;
+  city: string;
+  icon: string;
 }
 
 export interface HistorySliceState {
-  historyData: any;
-  history: WeatherBlockData[]
+  historyData:  WeatherBlockData[]
 }

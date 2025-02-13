@@ -10,8 +10,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      Weather app
-      <Layout>
+           <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<History />} />

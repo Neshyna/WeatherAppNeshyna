@@ -1,7 +1,8 @@
-import {ErrorProps}  from './types'
-import {ErrorContainer} from './styles'
+import { ErrorProps } from "./types"
+import { ErrorContainer } from "./styles"
 
-function Error (){
-
+const Error: React.FC<ErrorProps> = ({ error }) => {
+  return <ErrorContainer>{error.message}</ErrorContainer>
 }
+
 export default Error

@@ -7,7 +7,7 @@ import {
   NavContainer,
   Main,
   StyledNavLink,
-} from "./styles"
+  } from "./styles"
 
 function Layout({ children }: LayoutProps) {
   const navigate = useNavigate()
@@ -30,7 +30,7 @@ function Layout({ children }: LayoutProps) {
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
-            to="/users"
+            to="/history"
           >
             History
           </StyledNavLink>

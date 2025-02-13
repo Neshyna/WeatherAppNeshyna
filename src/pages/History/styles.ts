@@ -6,6 +6,5 @@ export const HistoryPageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background-image: src='../../assets/img.jpg';
-`
+  `
 
